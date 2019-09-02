@@ -1,6 +1,15 @@
 # EBC
 #### #UEFI  
+```
+들어가기전에...
+Before Start...
 
+이 Write Up은 성공한 풀이가 아닙니다.
+This Write Up is not successful Write Up.
+
+문제를 풀고 실패하기까지의 삽질과정을 보여줍니다.
+I will show you that what i did until failure.
+```
 처음엔 ebc라는 바이너리를 딱 하나 줍니다.
 
 ![alt text](../../images/ebc1.PNG "Logo Title Text 1")
@@ -124,5 +133,27 @@ ebc.efi 가 저장된 디렉토리로 가서 실행시켜봅니다.
 설치는 문서 찾아보면 간단히 할 수 있습니다!
 
 ***
+radare2 로 디버깅 해봅시다!
 
+![alt text](../../images/ebc13.PNG "Logo Title Text 1")
 
+우선 `r2` 명령어로 ebc 바이너리를 실행 후,
+`aa` 명령어로 바이너리를 분석해봅시다.
+
+***
+![alt text](../../images/ebc14.PNG "Logo Title Text 1")
+
+그러면 entry0 으로 처음 엔트리 부분으로 보이는 함수가 보입니다.
+
+문제는 함수이름도 다 깨져있고, 이런 형식의 어셈블리는 처음이라 이 부분에서 막혀버렸습니다;;
+
+바로 검색하여 알아보니 UEFI 바이트코드용 명령어 셋(SET)이 따로 있었습니다.  
+아래는 그 문서 (총 2637페이지의 압박;)
+
+[UEFI Specification](https://uefi.org/sites/default/files/resources/UEFI%202_5.pdf)
+
+이제 이 뒤로는 아직까진 풀지 못했습니다.
+
+다른 팀에서 올린 Write Up이 있다면 참고해서 공부해야겠습니다. ;(
+
+많은 조언 구합니다. 감사합니다 Thank You!
