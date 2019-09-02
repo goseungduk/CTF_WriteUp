@@ -8,7 +8,7 @@ Before Start...
 This Write Up is not successful Write Up.
 
 문제를 풀고 실패하기까지의 삽질과정을 보여줍니다.
-I will show you that what i did until failure.
+I will show you what i did until failure.
 ```
 처음엔 ebc라는 바이너리를 딱 하나 줍니다.
 
