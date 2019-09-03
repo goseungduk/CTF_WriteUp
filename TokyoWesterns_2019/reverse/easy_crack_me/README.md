@@ -10,14 +10,14 @@
 바이너리를 뜯어보면 알겠지만 플래그 인증과정이 총 8개정도 있고, 모든 조건에 다 맞아야 정확한 플래그로 인지합니다.
 
 ***
-* 첫 번째 조건
+* **첫 번째 조건**
 
 ![alt text](./images/easycrack2.PNG)
 
 플래그길이는 총 39바이트여야하며, `TWCTF{` 로 시작하여 `}` 로 끝나야합니다.
 
 ***
-* 두 번째 조건
+* **두 번째 조건**
 
 ![alt text](./images/easycrack3.PNG)
 
@@ -27,7 +27,7 @@
 s1 배열에 순서대로 개수를 입력 후에 그 배열이 check_table1과 같으면 통과입니다.
 
 ***
-* 세 번째 조건
+* **세 번째 조건**
 
 ![alt text](./images/easycrack4.PNG)
 
@@ -55,7 +55,7 @@ argv[34] argv[35] argv[36] argv[37]
 그리고 v21과 v25 배열을 check_table2와 check_table3과 비교하여 같은 배열이면 통과합니다.
 
 ***
-* 네 번째 조건
+* **네 번째 조건**
 
 ![alt text](./images/easycrack5.PNG)
 
@@ -83,7 +83,7 @@ argv[13] argv[21] argv[29] argv[37]
 그리고 v29와 v33 배열을 check_table4와 check_table5와 비교하여 동일하면 통과 !
 
 ***
-* 다섯 번째 조건
+* **다섯 번째 조건**
 
 ![alt text](./images/easycrack8.PNG)
 
@@ -96,7 +96,7 @@ argv[13] argv[21] argv[29] argv[37]
 그리고 mem_temp배열과 check_table6가 동일하면 통과인데 0x00은 check_table6에 없기에 생략합니다.
 
 ***
-* 여섯 번째 조건
+* **여섯 번째 조건**
 
 ![alt text](./images/easycrack9.PNG)
 
