@@ -1,0 +1,875 @@
+[
+{"event": "image_load", "image_name": "/home/tomori/follow-me/build/sample/calc", "image_id": 1, "base_addr": "0x560C632DA000", "image_size": "0x1377"},
+{"event": "image_load", "image_name": "/lib64/ld-linux-x86-64.so.2", "image_id": 2, "base_addr": "0x7f13ae220000", "image_size": "0x26c23"},
+{"event": "image_load", "image_name": "[vdso]", "image_id": 3, "base_addr": "0x7ffc2b775000", "image_size": "0x100a"},
+{"event": "image_load", "image_name": "/lib/x86_64-linux-gnu/libc.so.6", "image_id": 4, "base_addr": "0x7f1399a39000", "image_size": "0x3f0adf"},
+{"event": "branch", "inst_addr": "0x560C632DA5de", "next_inst_addr": "0", "branch_taken": true}, 
+{"event": "branch", "inst_addr": "0x560C632DAf44", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA765", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA6f6", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAf64", "next_inst_addr": "0", "branch_taken": false},
+
+{"event": "branch", "inst_addr": "0x560C632DAeae", "next_inst_addr": "0", "branch_taken": true},
+// main 함수 argv 확인후 진입
+
+{"event": "branch", "inst_addr": "0x560C632DA630", "next_inst_addr": "0", "branch_taken": true},
+//malloc
+
+{"event": "branch", "inst_addr": "0x560C632DA620", "next_inst_addr": "0", "branch_taken": true},
+//calloc
+
+{"event": "branch", "inst_addr": "0x560C632DAbd6", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+//while 문 안으로 진입
+
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+//else 문 안으로 진입
+
+/// 첫 번째 인자 종료
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+//while 문 안으로 진입
+
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+//else 문 안으로 진입
+====================================================================================================
+
+/// 두 번째 인자 종료 
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+//while 문 안으로 진입
+
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+//else 문 안으로 진입
+====================================================================================================
+
+/// 세 번째 인자 종료 세자리수가 나옴
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+//while 문 안으로 진입
+
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+// , 문자를 받음
+====================================================================================================
+
+
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+//else 문 안으로 진입
+====================================================================================================
+
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+// , 문자 받음
+====================================================================================================
+123,123,
+
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123,123
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123,123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123,123,123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123,123,123,123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+123,123,123,123,123,1231
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123,123,123,123,1231,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+// 9보다 크다 M 아니면 m
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": false},
+// m 이랑 비교해서 멈춤 정답은 m 이였음
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdab", "next_inst_addr": "0", "branch_taken": true},
+// m 끝
+====================================================================================================
+123,123,123,123,123,1231,123,m
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+// 9보다 큼
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdab", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+// / 보다 작음 + - * 중 하나
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": false},
+// 여기는 -
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcfd", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdab", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-m
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdb4", "next_inst_addr": "0", "branch_taken": false},
+// M 이 들어옴
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe02", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM : 알아낸 것 m은 작은 것을 가져오고 M 은 큰 것을 가져옴
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": false},
+// - 임
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcfd", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+// m 또는 M
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": false},
+//m
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdab", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,m
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdab", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": false},
+// -
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcfd", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": false},
+// - 입력
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcfd", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": false},
+// + 입력
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa0b", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAca6", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": false},
+// - 입력
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcfd", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdb4", "next_inst_addr": "0", "branch_taken": false},
+// M
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAe02", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-M
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": false},
+// + 입력
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa0b", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAca6", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-M+
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-M+123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-M+123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc4f", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAbef", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc13", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-M+123,123,123,
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": false},
+// m
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdab", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-M+123,123,123,m
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAc22", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd5d", "next_inst_addr": "0", "branch_taken": false},
+// m
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAdab", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+123,123,123,123,123,1231,123,mm-mM-123,123,123,mm-123,123,123,123,123,-+-M+123,123,123,mm
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAbe9", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc1c", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAc58", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAcaf", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd06", "next_inst_addr": "0", "branch_taken": false},
+// * 입력
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa5b", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa81", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa0b", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAa1f", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DAa81", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA93e", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DAd54", "next_inst_addr": "0", "branch_taken": true},
+====================================================================================================
+999,000,000,000,000,0000,000,mm-mM-931,932,933,mm-438,400,111,246,123,-+-M+001,002,003,mm*
+
+====================================================================================================
+{"event": "branch", "inst_addr": "0x560C632DAe87", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA8dc", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA610", "next_inst_addr": "0", "branch_taken": true},
+//printf
+{"event": "branch", "inst_addr": "0x560C632DA727", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA735", "next_inst_addr": "0", "branch_taken": false},
+{"event": "branch", "inst_addr": "0x560C632DA650", "next_inst_addr": "0", "branch_taken": true},
+{"event": "branch", "inst_addr": "0x560C632DA6a5", "next_inst_addr": "0", "branch_taken": true},
+{"event": "exit", "exit_code": 0}
+]
