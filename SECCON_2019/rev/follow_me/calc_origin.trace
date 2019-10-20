@@ -157,6 +157,7 @@
 {"event": "branch", "inst_addr": "0x55f6b4d44bef", "next_inst_addr": "0", "branch_taken": false},
 {"event": "branch", "inst_addr": "0x55f6b4d4493e", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44c13", "next_inst_addr": "0", "branch_taken": true},
+
 {"event": "branch", "inst_addr": "0x55f6b4d44e87", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44be9", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44c1c", "next_inst_addr": "0", "branch_taken": false},
@@ -169,6 +170,7 @@
 {"event": "branch", "inst_addr": "0x55f6b4d448dc", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d4493e", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44dab", "next_inst_addr": "0", "branch_taken": true},
+
 {"event": "branch", "inst_addr": "0x55f6b4d44e87", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44be9", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44c1c", "next_inst_addr": "0", "branch_taken": false},
@@ -202,6 +204,7 @@
 {"event": "branch", "inst_addr": "0x55f6b4d448dc", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d4493e", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44dab", "next_inst_addr": "0", "branch_taken": true},
+
 {"event": "branch", "inst_addr": "0x55f6b4d44e87", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44be9", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44c1c", "next_inst_addr": "0", "branch_taken": false},
@@ -215,6 +218,7 @@
 {"event": "branch", "inst_addr": "0x55f6b4d448dc", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d4493e", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44e02", "next_inst_addr": "0", "branch_taken": true},
+
 {"event": "branch", "inst_addr": "0x55f6b4d44e87", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44be9", "next_inst_addr": "0", "branch_taken": true},
 {"event": "branch", "inst_addr": "0x55f6b4d44c1c", "next_inst_addr": "0", "branch_taken": true},
