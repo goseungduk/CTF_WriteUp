@@ -9,8 +9,7 @@ ssrf 를 이용하는 문제.
 
 http://13.125.66.218/index.php?url=something
 
-이런 식으로 **url** 을 GET 방식으로 받아오는데, 어차피 "https" 값이 아니라면,
-**"no hack"** 을 띄워줄 것이다.
+이런 식으로 **url** 을 GET 방식으로 받아오는데, 어차피 "http", "https" 로 시작하는 값이 아니라면, **"no hack"** 을 띄워줄 것이다. 일종의 파싱한 url 문자열을 필터링하는 과정인 것이다.
 
 만약, preg_match 함수의 조건이 맞아떨어진다면, url 변수는 **file_get_contents** 함수의 인자로 들어간다.
 
@@ -54,5 +53,29 @@ PHP Wrapper 는 간략히 말하여 본 데이터를 원활히 출력 혹은 실
 
 우선 플래그 획득에 쓰인 페이로드는 위와 같다.
 
-초입에 말한 https 필터링을 어찌 우회할지 고민하였는데 구글링 결과 이런 것이 있었다.
+초입에 말한 https 필터링을 어찌 우회하면서 config.php 파일을 볼지 고민하였는데 구글링 결과 이런 것이 있었다.
+
+[1. \[WEB HACKING\] New attack vectors in SSRF(Server-Side Request Forgery) with URL Parser](https://www.hahwul.com/2017/09/14/web-hacking-new-attack-vectors-in/)
+
+[2. PHP parse_url 과 Curl 의 URL Parsing 차이](https://ngaa.tistory.com/22)
+
+위 두개의 게시글을 살펴보면, PHP URI Parser 는 마치 이메일을 인식하듯 **@(at sign)** 뒤의 문자열을 host 로 취급하는 것을 알 수 있다.
+
+그러면 해당 payload 의 url 인자는 결론적으로 
+` php://filter/write=string.rot13/resurce=../../../../../config.php ` 
+
+만 남게된다.
+
+결과는 아래와 같다.
+
+![res](../../.images/easy_ssrf_flag.png)
+
+.  
+.  
+.  
+
+
+**Contact : a42873410@gmail.com**
+
+
 
