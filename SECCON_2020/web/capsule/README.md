@@ -41,3 +41,15 @@ session.post('Runtime.evaluate', {expression: 'flag'}, (e, d) => {
   });
 });
 ```
+
+node.js 가 사용하는 **v8** 엔진의 inspector 모듈을 갖고 와서 플래그를 읽어온다.
+
+출제자의 말에 따르면 [여기](https://github.com/nodejs/node/issues/27404#issuecomment-569924796) 에서 출처를 얻었다고 한다.
+
+.
+
+.
+
+.
+
+**Contact:** a42873410@gmail.com
