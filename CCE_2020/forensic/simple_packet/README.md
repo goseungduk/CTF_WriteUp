@@ -2,14 +2,14 @@
 ### #socket #tcp #packet #forensic
 
 
-![files](../../.images/simple_packet1.PNG)
+![files](../../.images/simple_packet1.png)
 
 파일은 총 3개가 주어진다.
 
 - client.py  server.py
     
     두 파일은 소켓 통신을 한다. 
-    ![server1](../../.images/simple_packet2.PNG)
+    ![server1](../../.images/simple_packet2.png)
 
     보다시피 server.py 는 localhost:9999 에 해당 소켓을 열어놓고 client.py 의 입력을 기다린다. 
     이 때, client.py 에서 온 data 는 **do_xor()** 함수를 통과하여 온다.
@@ -19,11 +19,11 @@
     **do_xor()** 함수는 server.py 와 client.py 에서 똑같은 형태인데, 통신과정에서 출제자가 커스텀으로 만든 인코딩 함수이다.
 
     함수형태는 아래와 같다.
-    ![server2](../../.images/simple_packet3.PNG)
+    ![server2](../../.images/simple_packet3.png)
 
     `"\x10\x07\x19"` 를 key로 하여 함수의 인자로 들어온 문자열과 순차적으로 `xor` 연산을 한다.
 
-    ![server3](../../.images/simple_packet4.PNG)
+    ![server3](../../.images/simple_packet4.png)
 
     **win()** 함수는 다음과 같다. 큰 기능은 없다.
 
@@ -43,7 +43,7 @@
 
 해당 데이터부터 알아보자. 방법은 **do_xor()** 함수에 `Hell, World` 만 넣고 산출 값을 확인해보면 된다.
 
-![do_xor1](../../.images/simple_packet5.PNG)
+![do_xor1](../../.images/simple_packet5.png)
 
 산출 값을 확인해보니 `Xbu|+9Ghk|c` 가 나왔다. 아마, 패킷캡처 파일에 해당 데이터를 주고받은 결과가 있을 것이라 게싱하였다.
 
