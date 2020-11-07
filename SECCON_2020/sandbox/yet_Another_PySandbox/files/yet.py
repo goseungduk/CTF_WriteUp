@@ -27,7 +27,8 @@ def check_eval_str(s):
     s = s.lower()
     if LEN(s) > 0x1000:
         return FALSE
-    for x in ['eval', 'exec', '__', 'module', 'class', 'globals', 'os', 'import']: # bypassing
+    for x in ['eval', 'exec', '__', 'module', 'class', 'globals', 'os', 'import']: 
+        # need to bypass
         if x in s:
             return FALSE
     return TRUE
