@@ -675,6 +675,185 @@ libc_hidden_ver (_IO_new_file_underflow, _IO_file_underflow)
 ```
 
 
+`count = _IO_SYSREAD(fp, fp->_IO_buf_base, fp->_IO_buf_end - fp->_IO_buf_base);` 함수만 보면 된다.
+
+**stdin** 은 setbuf 함수로 인해 `_IO_buf_base` 와 `_IO_buf_end` 값이 같은 상태이다.
+
+만약 우리가 3번째 차례로 NULL 바이트를 입력할 수 있다면, 다음 fgets 에서는 **stdin** 이 버퍼가 있는 상태로 착각하여 충분한 사이즈 만큼 데이터를 입력할 수 있을 것이다.
+
+
+> 이제 **stdin** 에 충분한 길이를 입력할 수 있는 환경까지 만들어 놓았고, 이제 쉘만 잘 켜면 된다.
+>
+> 우리가 입력할 수 있는건 0x84 바이트 뿐인데 이걸로 어디에 `system("/bin/bash")` 함수를 쓸 수 있을까?
+
+
+---
+
+# **vtable 바꿔치기**
+
+**FSOP 기법** 에서는 보통  got overwrite 하듯, 표준입출력 함수가 점핑하는 vtable 주소를 쉘을 실행시킬 수 있는 주소로 overwrite 하여 만일 `puts` 나 `fgets` 가 실행되면 쉘이 켜지도록 한다.
+
+![lazy9](../../.images/lazynote9.png)
+
+해당 `_IO_2_1_stdout_` 구조체 안에  **vtable** 시작 주소가 있음을 알 수 있다.
+
+```
+gef➤  x/10gx 0x7ffff7dca2a0
+0x7ffff7dca2a0 <_IO_file_jumps>:	0x0000000000000000	0x0000000000000000
+0x7ffff7dca2b0 <_IO_file_jumps+16>:	0x00007ffff7a6e400	0x00007ffff7a6f3d0
+0x7ffff7dca2c0 <_IO_file_jumps+32>:	0x00007ffff7a6f0f0	0x00007ffff7a70490
+0x7ffff7dca2d0 <_IO_file_jumps+48>:	0x00007ffff7a71d20	0x00007ffff7a6da00
+0x7ffff7dca2e0 <_IO_file_jumps+64>:	0x00007ffff7a6d660	0x00007ffff7a6cc60
+
+gef➤  x/gx 0x00007ffff7a6e400
+0x7ffff7a6e400 <_IO_new_file_finish>:	0xec8348fb89485355
+
+gef➤  x/gx 0x00007ffff7a6f3d0
+0x7ffff7a6f3d0 <_IO_new_file_overflow>:	0xe5850f08c1f60f8b
+
+gef➤  x/gx 0x00007ffff7a6f0f0
+0x7ffff7a6f0f0 <_IO_new_file_underflow>:	0x0246850f04a8078b
+
+gef➤  x/gx 0x00007ffff7a70490
+0x7ffff7a70490 <__GI__IO_default_uflow>:	0x3592c7158d485355
+```
+
+이런 식으로 위에서 보았던 `_IO_jump_t` 구조체 형식과 같은 순서로 여러 함수가 들어있다.
+
+여기서 **glibc-2.24** 이전까지는 fake vtable 과 _IO_FILE 구조체를 만들어서 code hijacking 이 가능했지만, 우리가 위에서 보았던 glibc 에서의 vtable 함수호출 과정에서 이러한 매크로가 있었다.
+
+```c
+// glibc/libio/libioP.h
+
+/* vtable 을 이용한 JUMP 구문 */
+# define _IO_JUMPS_FUNC(THIS) (IO_validate_vtable (_IO_JUMPS_FILE_plus (THIS)))
+...
+...
+#define JUMP2(FUNC, THIS, X1, X2) (_IO_JUMPS_FUNC(THIS)->FUNC) (THIS, X1, X2)
+```
+
+**glibc-2.24** 이후부터는 `_IO_JUMPS_FUNC(THIS)` 매크로의 `IO_validate_vtable` 함수가 추가 되어서 아래와 같이 해당 vtable 함수가 알맞는 section을 넘어가면 프로그램이 종료될 것이다.
+
+```c
+ // glibc/libio/libioP.h:920
+
+static inline const struct _IO_jump_t *
+IO_validate_vtable (const struct _IO_jump_t *vtable)
+{
+  /* Fast path: The vtable pointer is within the __libc_IO_vtables
+     section.  */
+  uintptr_t section_length = __stop___libc_IO_vtables - __start___libc_IO_vtables;
+  uintptr_t ptr = (uintptr_t) vtable;
+  uintptr_t offset = ptr - (uintptr_t) __start___libc_IO_vtables;
+  if (__glibc_unlikely (offset >= section_length))
+    /* The vtable pointer is not in the expected section.  Use the
+       slow path, which will terminate the process if necessary.  */
+    _IO_vtable_check ();
+  return vtable;
+}
+```
+
+아무튼 이것때문에, 이상한 vtable 만들어서 갖다붙이면 안된다는 것이다.
+
+그러면 있는 vtable 중에 유효한 것을 사용해야한다는 것인데... 한 번 `_IO_file_jumps` 테이블 말고 다른 테이블을 둘러보았다.
+
+![lazy10](../../.images/lazynote10.png)
+
+이 중에서 `_IO_file_jumps` 테이블에서 멀지않은 곳에 해당 테이블이 있다.
+
+```
+gef➤  x/100gx 0x7ffff7dca2a0
+0x7ffff7dca2a0 <_IO_file_jumps>:	0x0000000000000000	0x0000000000000000
+0x7ffff7dca2b0 <_IO_file_jumps+16>:	0x00007ffff7a6e400	0x00007ffff7a6f3d0
+0x7ffff7dca2c0 <_IO_file_jumps+32>:	0x00007ffff7a6f0f0	0x00007ffff7a70490
+0x7ffff7dca2d0 <_IO_file_jumps+48>:	0x00007ffff7a71d20	0x00007ffff7a6da00
+0x7ffff7dca2e0 <_IO_file_jumps+64>:	0x00007ffff7a6d660	0x00007ffff7a6cc60
+0x7ffff7dca2f0 <_IO_file_jumps+80>:	0x00007ffff7a70a60	0x00007ffff7a6c920
+0x7ffff7dca300 <_IO_file_jumps+96>:	0x00007ffff7a6c7a0	0x00007ffff7a601e0
+0x7ffff7dca310 <_IO_file_jumps+112>:	0x00007ffff7a6d9e0	0x00007ffff7a6d260
+0x7ffff7dca320 <_IO_file_jumps+128>:	0x00007ffff7a6c9e0	0x00007ffff7a6c910
+0x7ffff7dca330 <_IO_file_jumps+144>:	0x00007ffff7a6d250	0x00007ffff7a71ea0
+0x7ffff7dca340 <_IO_file_jumps+160>:	0x00007ffff7a71eb0	0x0000000000000000
+0x7ffff7dca350:	0x0000000000000000	0x0000000000000000
+0x7ffff7dca360 <_IO_str_jumps>:	0x0000000000000000	0x0000000000000000
+0x7ffff7dca370 <_IO_str_jumps+16>:	0x00007ffff7a723c0	0x00007ffff7a72030
+0x7ffff7dca380 <_IO_str_jumps+32>:	0x00007ffff7a71fd0	0x00007ffff7a70490
+0x7ffff7dca390 <_IO_str_jumps+48>:	0x00007ffff7a723a0	0x00007ffff7a704f0
+...            ...
+```
+
+`_IO_str_jumps` vtable 이며, 동일한 `__overflow` 오프셋에 해당 함수가 있다.
+
+![lazy11](../../.images/lazynote11.png)
+
+```c
+// glibc/libio/strops.c:80
+
+// 2.27 버전
+int
+_IO_str_overflow (_IO_FILE *fp, int c)
+{
+  int flush_only = c == EOF;
+  _IO_size_t pos;
+  if (fp->_flags & _IO_NO_WRITES)
+      return flush_only ? 0 : EOF;
+  if ((fp->_flags & _IO_TIED_PUT_GET) && !(fp->_flags & _IO_CURRENTLY_PUTTING))
+    {
+      fp->_flags |= _IO_CURRENTLY_PUTTING;
+      fp->_IO_write_ptr = fp->_IO_read_ptr;
+      fp->_IO_read_ptr = fp->_IO_read_end;
+    }
+  pos = fp->_IO_write_ptr - fp->_IO_write_base;
+  if (pos >= (_IO_size_t) (_IO_blen (fp) + flush_only))
+    {
+      if (fp->_flags & _IO_USER_BUF) /* not allowed to enlarge */
+	return EOF;
+      else
+	{
+	  char *new_buf;
+	  char *old_buf = fp->_IO_buf_base;
+	  size_t old_blen = _IO_blen (fp);
+	  _IO_size_t new_size = 2 * old_blen + 100;
+	  if (new_size < old_blen)
+	    return EOF;
+	  new_buf = (char *) (*((_IO_strfile *) fp)->_s._allocate_buffer) (new_size);
+	  if (new_buf == NULL)
+	    {
+	      /*	  __ferror(fp) = 1; */
+	      return EOF;
+	    }
+	  if (old_buf)
+	    {
+	      memcpy (new_buf, old_buf, old_blen);
+	      (*((_IO_strfile *) fp)->_s._free_buffer) (old_buf);
+	      /* Make sure _IO_setb won't try to delete _IO_buf_base. */
+	      fp->_IO_buf_base = NULL;
+	    }
+	  memset (new_buf + old_blen, '\0', new_size - old_blen);
+
+	  _IO_setb (fp, new_buf, new_buf + new_size, 1);
+	  fp->_IO_read_base = new_buf + (fp->_IO_read_base - old_buf);
+	  fp->_IO_read_ptr = new_buf + (fp->_IO_read_ptr - old_buf);
+	  fp->_IO_read_end = new_buf + (fp->_IO_read_end - old_buf);
+	  fp->_IO_write_ptr = new_buf + (fp->_IO_write_ptr - old_buf);
+
+	  fp->_IO_write_base = new_buf;
+	  fp->_IO_write_end = fp->_IO_buf_end;
+	}
+    }
+
+  if (!flush_only)
+    *fp->_IO_write_ptr++ = (unsigned char) c;
+  if (fp->_IO_write_ptr > fp->_IO_read_end)
+    fp->_IO_read_end = fp->_IO_write_ptr;
+  return c;
+}
+```
+
+`new_buf = (char *) (*((_IO_strfile *) fp)->_s._allocate_buffer) (new_size);` 부분이 우리가 `system('/bin/sh')` 를 실행 시키기 위한 중요 도구가 될 것이다.
+
+
+
 
 
 
