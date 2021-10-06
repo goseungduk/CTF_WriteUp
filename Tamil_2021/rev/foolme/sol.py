@@ -1,0 +1,40 @@
+from z3 import *
+s = Solver()
+flag = [BitVec('val_%i' % i, 8) for i in range(0, 26)]
+res_flag = "TamilCTF{StRiNgs_C0mP4re5}"
+s.add(ord(res_flag[0]) ^ 0x29 ^ 0x42 == flag[25])
+s.add(((ord(res_flag[1])-19) ^ 1)+29 == flag[23])
+s.add((ord(res_flag[2]) ^ 1) ^ 0xd == flag[22])
+s.add(((ord(res_flag[4]) ^ 0x4a) << 2)//2 == flag[24])
+s.add(((ord(res_flag[5]) ^ 7)+30)-29 == flag[18])
+s.add(((ord(res_flag[6])-9) ^ 0x6e) ^ 0x46 == flag[20])
+s.add((ord(res_flag[7]) ^ 0x7f) << 1 == flag[17])
+s.add(((ord(res_flag[8])-47)*12)//8 == flag[16])
+s.add(((ord(res_flag[9])-32) << 1) ^ 0x23 == flag[15])
+s.add((ord(res_flag[10]) ^ 0x4d)+61 == flag[14])
+s.add((ord(res_flag[11]) ^ 0x34)//2 == flag[13])
+s.add(((ord(res_flag[12]) ^ 0x56) ^ 0x2d) << 2 == flag[21])
+s.add(((ord(res_flag[13]) << 1)-64)+22 == flag[12])
+s.add(((ord(res_flag[14])-2) ^ 0x60) << 4 == flag[10])
+s.add(((ord(res_flag[15])-3) ^ 0x14)-5 == flag[11])
+s.add((((ord(res_flag[16]) ^ 0x2a)-63)*2)-7 == flag[8])
+s.add(196-((ord(res_flag[17])-14)*2) == flag[9])
+s.add((ord(res_flag[18])*3)//2 == flag[4])
+s.add((ord(res_flag[19])+9) ^ 0x29 == flag[7])
+s.add((((ord(res_flag[20])-20) << 1) ^ 2)-69 == flag[6])
+s.add((((ord(res_flag[21])+2)*2)-11) ^ 0x15 == flag[3])
+s.add(((ord(res_flag[22]) ^ 0x52)*2)-15 == flag[5])
+s.add(((ord(res_flag[23])-17)//2) ^ 31 == flag[1])
+s.add(((ord(res_flag[24]) ^ 0x1f)*2) ^ 11 == flag[2])
+s.add(((ord(res_flag[25]) ^ 0xb9)//4) == flag[0])
+s.add(flag[19] == ord('_'))
+s.check()
+m = s.model()
+res = ""
+res_list = sorted([(d, m[d])
+                  for d in m], key=lambda x: int(str(x[0]).split('_')[1]))
+
+for i in range(0, len(res_list)):
+    res += chr(res_list[i][1].as_long())
+
+print(res)
