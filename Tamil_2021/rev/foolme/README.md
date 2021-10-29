@@ -149,3 +149,13 @@ print(res)
 ![i](../../.images/fool11.png)
 
 마지막 게싱에서 조금 ㅂㄷㅂㄷ..
+
+Thank y0u!
+
+.  
+.  
+.  
+.  
+.
+
+**Contact : a42873410@gmail.com**
